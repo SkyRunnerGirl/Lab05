@@ -75,12 +75,15 @@ Question 2: Is it time to wake up for work? \n`);
 let alarmSet = true;
 let weekDay = false;
 
-if (alarmSet === true && weekDay === true) {
+if (alarmSet && weekDay) {
    console.log('Sound Alarm! Time for work!');
 } else {
    console.log('I can sleep in!');
 }
-
+/* Don't need to set alarmSet and weekDay to true in if statement b/c it is inherent they both must be true when using &&.
+Original: if (alarmSet === true && weekDay === true)
+Change: removed === and true values to clean up code
+*/
 
 /*-------------------------------------------------------*/
 
@@ -105,7 +108,7 @@ Question 3: Username & Password \n`);
  } else {
     console.log('Admin Access Denied');
  }
-
+/* Might not need to wrap each && arguement in parentheses, as it appeared to work correctly in walkthrough, but I kept the wrap b/c it helps readability. */
 
 /*-------------------------------------------------------*/
 
@@ -127,9 +130,9 @@ Question 4: Student Class \n`);
 let studentGrade = 12;
 let studentClass;
 
-if (studentGrade <= 6) {
+if (studentGrade >= 0 && studentGrade <= 6) {
    studentClass = 'Elementary';
-} else if (studentGrade <= 8) {
+} else if (studentGrade === 7 || studentGrade === 8) {
    studentClass = 'Middle';
 } else if (studentGrade === 9) {
    studentClass = 'Freshman';
@@ -144,6 +147,22 @@ if (studentGrade <= 6) {
 }
 console.log(studentClass);
 
+/* Changed if and else if statements to be more specific and use && (and) and || (or) statements.
+Original:
+if (studentGrade <= 6) {
+   studentClass = 'Elementary';
+} else if (studentGrade <= 8) {
+   studentClass = 'Middle';
+} else if (studentGrade === 9) {
+   studentClass = 'Freshman';
+} else if (studentGrade === 10) {
+   studentClass = 'Sophmore';
+} else if (studentGrade === 11) {
+   studentClass = 'Junior';
+} else if (studentGrade === 12) {
+   studentClass = 'Senior';
+} else {
+   console.log('Error');
 
 /*-------------------------------------------------------*/
 
@@ -157,23 +176,34 @@ Question 5: Loops! \n`);
  *         Print the iterator if the remainder (% // modulus) is 0 when divisible by 4.
  * 
  * ↓ YOUR CODE HERE ↓ */
+
+/* let i = 10 // start place
+   i > -11 //stop place
+   i-- // incrementor
+*/
+
 for (let i = 10; i > -11; i--) {
    console.log(i);
 }
 
 /* Original Step 2
-let i = 0;
+let i = 1;
 do {
-   i++;
    console.log(i);
-} while (i < 50);
+   i++;
+} while (i <= 50);
+
+Modified this code so I could use the "do/while" loop in the next step correctly.
 */
 
-for (let i = 0; i <50; i++) {
-   if (i % 4 === 0) {;
+let i = 1;
+do {
+   if (i % 4 === 0) {
    console.log(i);
    }
-}
+   i++;
+} while (i <= 50);
+/* Changed code back to "do/while" loop instead of the "for" loop that I used to make it work. Watched walkthrough to find out how to just modify original "do/while" loop to get same outcome. */
 
 /*-------------------------------------------------------*/
 
@@ -194,10 +224,13 @@ Question 6: Debugging an infinite loop! \n`);
   */
 
 
-   for (let i = 11; i < 10; i++) { 
+   for (let i = 0; i < 10; i++) { 
       console.log(i);   
    }
-   /* I switched the sign in the 2nd arguement to be less than, so the code wouldn't run 
-   because i is already more than 10 at the start. */
+   /* 
+   Original: I switched the greater than (>) sign in the 2nd arguement to be less than (<), so the code won't run because i is already more than 10 at the start. - correct
+   After walkthrough: changed i to 0 and kept the changed < sign to get the code to at least do something. - correct
+   There are multiple ways to "fix" this, the point is to understand why it's an infinite loop and provide at least one way to fix.
+   */
 
 console.log('-----------Finished------------')
